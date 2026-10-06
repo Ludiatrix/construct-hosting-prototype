@@ -1,0 +1,14 @@
+services:
+  registry:
+    build: .
+    environment:
+      CONSTRUCT_API_KEY: ${CONSTRUCT_API_KEY:?Set CONSTRUCT_API_KEY in .env}
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - construct-data:/data
+    restart: unless-stopped
+    mem_limit: 2g
+    cpus: 2
+volumes:
+  construct-data:
