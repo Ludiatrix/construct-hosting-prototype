@@ -11,21 +11,8 @@
     </cargoProject>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="838b61fb-68d0-43e4-8aea-43e41b548b32" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/construct-workshop.iml" beforeDir="false" />
+    <list default="true" id="838b61fb-68d0-43e4-8aea-43e41b548b32" name="Changes" comment="Apply AI base before cleaning and documenting.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fixtures/crate.usda" beforeDir="false" afterPath="$PROJECT_DIR$/samples/crate.usda" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/api.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/api.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_validation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,61 +58,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.462078985845078" />
-      <entry key="MS500" value="4.678739190320934" />
-      <entry key="S2" value="10.191623389313161" />
-      <entry key="S5" value="12.741298854208933" />
-      <entry key="S10" value="13.804690776541026" />
-      <entry key="S30" value="14.612604872807905" />
-      <entry key="S60" value="16.328096831726775" />
-      <entry key="M2" value="29.37878151363537" />
-      <entry key="M5" value="79.5666097875343" />
-      <entry key="M10" value="134.79431187722653" />
-      <entry key="M15" value="170.7883346728279" />
-      <entry key="M30" value="232.13421977347818" />
-      <entry key="H1" value="283.30559328562686" />
-      <entry key="H2" value="318.38658496799917" />
-      <entry key="H4" value="339.2985355080065" />
-      <entry key="D1" value="358.83547171345936" />
-      <entry key="W1" value="362.399525299446" />
+      <entry key="MS100" value="1.1802401325017946" />
+      <entry key="MS500" value="3.6482647444485408" />
+      <entry key="S2" value="10.938332208183" />
+      <entry key="S5" value="22.68210344293364" />
+      <entry key="S10" value="32.08208525880484" />
+      <entry key="S30" value="41.73393809729291" />
+      <entry key="S60" value="46.10636029901159" />
+      <entry key="M2" value="60.11203503056238" />
+      <entry key="M5" value="110.67732256119804" />
+      <entry key="M10" value="166.3086453349247" />
+      <entry key="M15" value="202.56278796474038" />
+      <entry key="M30" value="264.32113467011186" />
+      <entry key="H1" value="315.81551965038227" />
+      <entry key="H2" value="351.1129169492311" />
+      <entry key="H4" value="372.15316797540385" />
+      <entry key="D1" value="391.8099150503584" />
+      <entry key="W1" value="395.3958397192184" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="3.107150863287927E-256" />
-      <entry key="S5" value="6.265344218047272E-103" />
-      <entry key="S10" value="7.915392736969643E-52" />
-      <entry key="S30" value="9.25033560485582E-18" />
-      <entry key="S60" value="3.0414364377470934E-9" />
-      <entry key="M2" value="5.514921973833435E-5" />
-      <entry key="M5" value="0.019797746039664978" />
-      <entry key="M10" value="0.14070446346745694" />
-      <entry key="M15" value="0.27052365697577035" />
-      <entry key="M30" value="0.5201188873476608" />
-      <entry key="H1" value="0.7211926839254966" />
-      <entry key="H2" value="0.8492306423613607" />
-      <entry key="H4" value="0.9215371085102119" />
-      <entry key="D1" value="0.9864736095237169" />
-      <entry key="W1" value="0.9980563619582966" />
+      <entry key="S2" value="1.6603879719688113E-257" />
+      <entry key="S5" value="1.941260561134824E-103" />
+      <entry key="S10" value="4.4059738550458886E-52" />
+      <entry key="S30" value="7.6093455295529E-18" />
+      <entry key="S60" value="2.7585042196003275E-9" />
+      <entry key="M2" value="5.2521464370296475E-5" />
+      <entry key="M5" value="0.019414880891077495" />
+      <entry key="M10" value="0.1393372918176517" />
+      <entry key="M15" value="0.26876842325687383" />
+      <entry key="M30" value="0.5184288024954556" />
+      <entry key="H1" value="0.7200200014551372" />
+      <entry key="H2" value="0.8485399233124682" />
+      <entry key="H4" value="0.9211622676339218" />
+      <entry key="D1" value="0.9864067224872347" />
+      <entry key="W1" value="0.9980466941922816" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.4216807633440145" />
-      <entry key="MS500" value="4.6515782614690675" />
-      <entry key="S2" value="10.17632938024719" />
-      <entry key="S5" value="12.733578334580896" />
-      <entry key="S10" value="13.800494581600693" />
-      <entry key="S30" value="14.611071546338076" />
-      <entry key="S60" value="16.326664498309093" />
-      <entry key="M2" value="29.376562461153682" />
-      <entry key="M5" value="79.58376704878896" />
-      <entry key="M10" value="134.9324825625552" />
-      <entry key="M15" value="171.05646958656675" />
-      <entry key="M30" value="232.6524667077046" />
-      <entry key="H1" value="284.02556027534695" />
-      <entry key="H2" value="319.2351056011025" />
-      <entry key="H4" value="340.2196892674644" />
-      <entry key="D1" value="359.8218770923051" />
-      <entry key="W1" value="363.397571802199" />
+      <entry key="MS100" value="1.147841922688565" />
+      <entry key="MS500" value="3.6186378790904348" />
+      <entry key="S2" value="10.906872991616428" />
+      <entry key="S5" value="22.656608234312003" />
+      <entry key="S10" value="32.0647486523692" />
+      <entry key="S30" value="41.726632341103546" />
+      <entry key="S60" value="46.10188597619237" />
+      <entry key="M2" value="60.10829391391665" />
+      <entry key="M5" value="110.6934870005943" />
+      <entry key="M10" value="166.44514128583484" />
+      <entry key="M15" value="202.82896131532863" />
+      <entry key="M30" value="264.8375865010728" />
+      <entry key="H1" value="316.5342603532245" />
+      <entry key="H2" value="351.9607196303372" />
+      <entry key="H4" value="373.0739331417681" />
+      <entry key="D1" value="392.79625122836234" />
+      <entry key="W1" value="396.3938762230863" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -140,38 +127,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Cargo.Build `Run`.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Run.executor&quot;: &quot;Run&quot;,
-    &quot;CidrDebugProfileConversion&quot;: &quot;true&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.rust.reset.selective.auto.import&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/ludiatrix/Downloads/doki-theme-jetbrains/lib/doki-theme-jetbrains-88.5-1.16.1.jar&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;org.rust.cargo.project.model.PROJECT_DISCOVERY&quot;: &quot;true&quot;,
-    &quot;org.rust.cargo.project.model.impl.CargoExternalSystemProjectAware.subscribe.first.balloon&quot;: &quot;&quot;,
-    &quot;org.rust.disableDetachedFileInspection/home/ludiatrix/RustroverProjects/construct-workshop/features.rs&quot;: &quot;true&quot;,
-    &quot;org.rust.disableDetachedFileInspection/home/ludiatrix/RustroverProjects/construct-workshop/features/api/constants.rs&quot;: &quot;true&quot;,
-    &quot;org.rust.disableDetachedFileInspection/home/ludiatrix/RustroverProjects/construct-workshop/features/database/systems.rs&quot;: &quot;true&quot;,
-    &quot;org.rust.first.attach.projects&quot;: &quot;true&quot;,
-    &quot;python.packages.toolwindow.project.migrated.to.right.top.v2&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Cargo.Build `Run`.executor": "Run",
+    "Cargo.Run.executor": "Run",
+    "CidrDebugProfileConversion": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.rust.reset.selective.auto.import": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/home/ludiatrix/RustroverProjects/construct-registry",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "org.rust.cargo.project.model.PROJECT_DISCOVERY": "true",
+    "org.rust.cargo.project.model.impl.CargoExternalSystemProjectAware.subscribe.first.balloon": "",
+    "org.rust.disableDetachedFileInspection/home/ludiatrix/RustroverProjects/construct-workshop/features.rs": "true",
+    "org.rust.disableDetachedFileInspection/home/ludiatrix/RustroverProjects/construct-workshop/features/api/constants.rs": "true",
+    "org.rust.disableDetachedFileInspection/home/ludiatrix/RustroverProjects/construct-workshop/features/database/systems.rs": "true",
+    "org.rust.first.attach.projects": "true",
+    "python.packages.toolwindow.project.migrated.to.right.top.v2": "true",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="PyDebuggerOptionsProvider">
     <option name="myDebuggerBackend" value="DEBUGPY" />
   </component>
@@ -183,7 +170,7 @@
   </component>
   <component name="RunManager">
     <configuration name="Run" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
-      <option name="command" value="run --package construct-workshop --bin construct-workshop" />
+      <option name="command" value="run --package construct-registry --bin construct-registry" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
       <option name="emulateTerminal" value="true" />
@@ -218,7 +205,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
-    <option name="LAST_COMMIT_MESSAGE" value="init" />
+    <MESSAGE value="Apply AI base before cleaning and documenting." />
+    <option name="LAST_COMMIT_MESSAGE" value="Apply AI base before cleaning and documenting." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
