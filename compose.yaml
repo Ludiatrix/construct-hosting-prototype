@@ -1,14 +1,26 @@
 services:
   registry:
-    build: .
+    image: 111859959018.dkr.ecr.us-east-2.amazonaws.com/construct-portfolio-project-api:api-v1
     environment:
-      CONSTRUCT_API_KEY: ${CONSTRUCT_API_KEY:?Set CONSTRUCT_API_KEY in .env}
+      AWS_REGION: us-east-2
+      CONSTRUCT_BIND: 0.0.0.0:8080
+      CONSTRUCT_BUCKET: construct-portfolio-project-111859959018-us-east-2-an
+      CONSTRUCT_VALIDATOR_FUNCTION: construct-portfolio-project-validator
+      CONSTRUCT_DATABASE_HOST: construct-portfolio-project-db.c5gu668eixuj.us-east-2.rds.amazonaws.com
+      CONSTRUCT_DATABASE_SECRET: arn:aws:secretsmanager:us-east-2:111859959018:secret:construct-portfolio-project/db-app-HX6atC
+      CONSTRUCT_AUTH_SECRET: arn:aws:secretsmanager:us-east-2:111859959018:secret:construct-portfolio-project/api-auth-RVElBq
+      CONSTRUCT_DATABASE_CA: /app/certs/rds-ca-bundle.pem
     ports:
       - "127.0.0.1:8080:8080"
-    volumes:
-      - construct-data:/data
     restart: unless-stopped
+    stop_grace_period: 150s
     mem_limit: 2g
     cpus: 2
-volumes:
-  construct-data:
+    read_only: true
+    tmpfs:
+      - /tmp:size=384m,mode=1777
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

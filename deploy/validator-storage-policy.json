@@ -1,0 +1,10 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::construct-portfolio-project-111859959018-us-east-2-an/incoming/*"
+    }
+  ]
+}

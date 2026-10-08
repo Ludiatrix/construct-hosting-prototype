@@ -1,0 +1,6 @@
+FROM public.ecr.aws/lambda/python:3.12
+COPY requirements.txt ${LAMBDA_TASK_ROOT}/requirements.txt
+RUN pip install --no-cache-dir -r ${LAMBDA_TASK_ROOT}/requirements.txt
+COPY validate_usd.py lambda_handler.py ${LAMBDA_TASK_ROOT}/
+ENV OMP_NUM_THREADS=1
+CMD ["lambda_handler.handler"]

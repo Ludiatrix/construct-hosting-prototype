@@ -1,151 +1,50 @@
-# Construct Registry
+# Construct registry
 
-A small Rust REST service for storing and retrieving USD constructs.
-
-1. Upload a USD file or USDZ package.
-2. Validate it with official OpenUSD.
-3. Store the original bytes under their SHA-256 content address.
-4. Record metadata in SQLite.
-5. Retrieve the original file by its address from any game engine or HTTP client.
-
-## Run locally
-
-Install Rust and Python 3.12. From this directory:
-
-```sh
-python3 -m venv .venv
-.venv/bin/pip install -r requirements.txt
-export CONSTRUCT_PYTHON="$PWD/.venv/bin/python"
-export CONSTRUCT_API_KEY="$(python3 -c 'import secrets; print(secrets.token_urlsafe(32))')"
-cargo run --locked --release
-```
-
-The server defaults to `127.0.0.1:8080`. Keep your API key available to your client.
-All construct endpoints require `Authorization: Bearer <key>`. `/health` is public.
-This is a single-owner service with one shared key, not a user-account system.
-
-Alternatively, copy `.env.example` to `.env`, set a strong key, then:
-
-```sh
-docker compose up --build -d
-```
-
-Docker stores the database and files in the `construct-data` volume. The example
-publishes only on localhost. Put the service behind your HTTPS reverse proxy when
-hosting it remotely. Docker configuration is supplied but was not built here.
+A REST service for self-contained USD constructs. The Rust API runs on EC2, stores files in private S3, invokes an OpenUSD Lambda validator, and records metadata in RDS PostgreSQL. See [DEPLOY.md](DEPLOY.md) for this project's deployment steps.
 
 ## API
 
-| Method | Endpoint | Result |
-|---|---|---|
-| POST | `/constructs?filename=crate.usdz` | Validate and store raw request bytes; return metadata |
-| GET | `/constructs/{address}` | Download the original bytes |
-| GET | `/constructs/{address}/metadata` | Read one database record |
-| GET | `/constructs?limit=50&offset=0` | List records, newest first; maximum limit 200 |
-| GET | `/health` | Liveness response |
+| Method | Path | Authentication | Response |
+|---|---|---|---|
+| GET | `/health` | None | Process liveness |
+| POST | `/constructs?filename=crate.usda` | Upload bearer key | 201 for new content, 200 for duplicate |
+| GET | `/constructs?limit=50&offset=0` | Read bearer key | Paginated metadata |
+| GET | `/constructs/{address}/metadata` | Read bearer key | Construct record |
+| GET | `/constructs/{address}` | Read bearer key | Original bytes streamed from S3 |
 
-Upload uses `Content-Type: application/octet-stream`, not multipart or JSON.
+Uploads use `Content-Type: application/octet-stream`. Addresses are `sha256:<64 lowercase hexadecimal digits>`, computed from the original file bytes. Different encodings of the same scene have different addresses. Downloads return those original bytes; engine import is the client's responsibility. The upload key does not grant read access, and the read key does not grant upload access. There are no usage tracking or engine integration features.
 
-```sh
-curl --fail-with-body \
-  -H "Authorization: Bearer $CONSTRUCT_API_KEY" \
-  -H 'Content-Type: application/octet-stream' \
-  --data-binary @fixtures/crate.usda \
-  'http://127.0.0.1:8080/constructs?filename=crate.usda'
-```
+## Features and lifecycle
 
-The response contains `address`, `filename`, `format`, `size_bytes`, `created_at`,
-`default_prim`, and `prim_count`. A new upload returns HTTP 201; identical bytes
-return HTTP 200 and the existing record. The first filename is retained.
+- `config`: non-secret environment settings and Secrets Manager JSON loading.
+- `app`: composition root, credentials, database pool, AWS clients.
+- `features/api`: routes, bearer authorization, request handling and HTTP errors.
+- `features/constructs`: receive → stage → validate → publish → record → cleanup.
+- `features/storage`: bounded local temporary receive, S3 staging, publication and streamed reads.
+- `features/validation`: synchronous Lambda contract and hash/size verification.
+- `features/database`: PostgreSQL migrations, records, collection and deduplication.
+- `server`: startup dependency checks and graceful shutdown.
+- `lambda_handler.py`: bounded S3 download, hash verification and isolated validator subprocess.
+- `validate_usd.py`: OpenUSD parsing, defaultPrim, composition, mesh and package checks.
 
-Copy the returned address, including its `sha256:` prefix:
+## Limits and behavior
 
-```sh
-ADDRESS='sha256:PASTE_THE_RETURNED_HASH_HERE'
-curl --fail-with-body \
-  -H "Authorization: Bearer $CONSTRUCT_API_KEY" \
-  "http://127.0.0.1:8080/constructs/$ADDRESS" \
-  --output downloaded.usda
+Uploads support `.usd`, `.usda`, `.usdc`, `.usdz`, up to 128 MiB; at most two uploads run per API instance with a 120-second request deadline. Validation runs in a subprocess with a 20-second deadline and never executes Lua. Raw layers must have no external dependencies; USDZ packages must be self-contained. USDZ limits are 4096 entries and 512 MiB expanded data. This validates USD structure, not whether a particular engine implements every schema or custom behavior.
 
-curl --fail-with-body \
-  -H "Authorization: Bearer $CONSTRUCT_API_KEY" \
-  'http://127.0.0.1:8080/constructs?limit=50&offset=0'
-```
+Database transaction advisory locks serialize publication for the same hash across instances. Metadata is committed only after S3 publication succeeds. S3 and PostgreSQL do not share a transaction: a process crash or database failure after publication can leave a validated object without a record. Reuploading the same bytes repairs that case; no automatic permanent-object deletion is performed. Temporary S3 objects are deleted on ordinary completion; the bucket lifecycle covers cancellation, crashes and noncurrent versions. Ensure the incoming cleanup rules exist.
 
-Use the response's `format` for your engine's local file extension. Generic `.usd`
-files are detected as `usda` or `usdc`. A downloaded USDZ remains a USDZ package.
-The HTTP API returns files; your engine's existing USD importer handles import.
-Custom attributes and scripts remain opaque stored data and are never executed.
+The service loads secrets at startup; restart after application password/key rotation. The RDS master secret is never used. Database connections require verified TLS using the RDS CA bundle. The API image contains no Python or OpenUSD. Runtime credentials come from the EC2 instance role. `/health` is a liveness endpoint, not ongoing AWS dependency monitoring.
 
-## Validation
+## Configuration
 
-Accepts `.usd`, `.usda`, `.usdc`, and `.usdz`, up to 128 MiB per upload.
-OpenUSD must parse and compose the construct successfully, with a valid
-`defaultPrim` and at least one active prim. Mesh point values and topology are
-checked at authored sample times. This is file/composition validation, not a
-promise of engine compatibility or complete physics/material semantics.
+`compose.yaml` contains this project's bucket, Lambda name, database endpoint, and application-secret ARNs. Secret values remain in Secrets Manager. The database secret needs `host`, `port`, `dbname`, `username`, `password`; the authentication secret needs distinct `upload_api_key` and `read_api_key` strings, each at least 32 characters. The service requires `construct_app`, database `construct_registry`, and schema `registry` owned by that user. Migrations run on startup.
 
-Standalone USD files must have no asset dependencies. Use USDZ for textures,
-referenced layers, and other asset files. USDZ validation checks paths, duplicate
-entries, symlinks, compression/encryption, 64-byte alignment, dependencies,
-composition, and a 512 MiB expanded-size limit. Nested USDZ packages and asset
-paths containing `..` are intentionally unsupported.
-
-Invalid USD returns HTTP 422. Invalid parameters return 400, oversized uploads
-413, incorrect media types 415, missing records 404, and invalid credentials 401.
-Two uploads may run at once; additional uploads return 503 and can be retried.
-Uploads time out after 120 seconds; OpenUSD validation has a 20-second timeout.
-
-Validation runs in a separate Python process using `usd-core`, because Rust does
-not parse USD natively here. This is not a hardened public upload sandbox; use the
-service for your authenticated authoring workflow.
-
-## Storage and configuration
-
-| Variable | Default | Purpose |
-|---|---|---|
-| `CONSTRUCT_API_KEY` | Required | Shared bearer key |
-| `CONSTRUCT_BIND` | `127.0.0.1:8080` | Listening address |
-| `CONSTRUCT_DATA_DIR` | `data` | Persistent database and object directory |
-| `CONSTRUCT_PYTHON` | `python3` | Python executable with OpenUSD installed |
-| `CONSTRUCT_VALIDATOR` | `validate_usd.py` | Validator script path |
-
-`data/registry.sqlite3` contains the `constructs` table. `data/objects/` holds
-immutable files named by hash and format. `data/incoming/` is temporary staging.
-Back up the database and object directory together while the service is stopped.
-
-Content addresses hash original file bytes, not normalized scene semantics.
-Equivalent scenes with different encoding or bytes get different addresses.
-Files are published before SQLite records; an interrupted commit can leave an
-unlisted object that a later identical upload can reuse. There is no delete API,
-cloud bucket dependency, usage collection, or cleanup daemon. Storage uses the
-server's persistent disk or a mounted storage volume. Run one instance per data
-directory. Do not modify its object files manually.
-
-## Verify
-
-With OpenUSD installed in `CONSTRUCT_PYTHON`:
+## Verification
 
 ```sh
-cargo fmt --all -- --check
-cargo clippy --locked --all-targets -- -D warnings
 cargo test --locked
-"$CONSTRUCT_PYTHON" -m unittest discover -s tests -p 'test_*.py' -v
+cargo clippy --all-targets --locked -- -D warnings
+python3 -m unittest discover -s tests -p 'test_*.py' -v
 ```
 
-Verified here: formatting and strict Clippy checks, all four Rust API tests, all five
-Python validation tests, and live HTTP upload/download checks for ASCII USD,
-binary USD, and USDZ with independently checked SHA-256 addresses.
-
-Tests cover upload/download byte preservation, content deduplication, database
-reopening, concurrent duplicate uploads, authentication, size/type/path handling,
-invalid USD, missing dependencies, topology, and ASCII/binary/USDZ validation.
-
-## Files
-
-- `src/lib.rs`: REST endpoints, SQLite records, hashing, storage, validation calls.
-- `src/main.rs`: configuration and server startup.
-- `validate_usd.py`: OpenUSD validation.
-- `fixtures/crate.usda`: a self-contained sample construct.
-- `tests/`: API and USD validation tests.
-- `Dockerfile`, `compose.yaml`: container deployment with persistent storage.
+Python tests require `usd-core==26.5` and boto3. Rust units check authentication separation, upload guards, streamed size enforcement, hashes, cleanup and Lambda responses. Python tests exercise actual OpenUSD formats/packages and the Lambda boundary with mocked S3. See deployment smoke tests for live AWS verification. Docker image builds and deployment require your local Docker and AWS access; they are not performed by these unit tests.

@@ -14,7 +14,7 @@ class ValidationTests(unittest.TestCase):
     def test_ascii_binary_generic_and_usdz(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
-            source = ROOT / 'fixtures/crate.usda'
+            source = ROOT / 'samples/crate.usda'
             layer = Sdf.Layer.FindOrOpen(str(source))
             self.assertTrue(layer.Export(str(root / 'crate.usdc')))
             (root / 'crate.usd').write_bytes(source.read_bytes())

@@ -1,0 +1,55 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ManageTemporaryUploads",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject",
+        "s3:DeleteObject"
+      ],
+      "Resource": "arn:aws:s3:::construct-portfolio-project-111859959018-us-east-2-an/incoming/*"
+    },
+    {
+      "Sid": "PublishAndReadConstructs",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject"
+      ],
+      "Resource": "arn:aws:s3:::construct-portfolio-project-111859959018-us-east-2-an/constructs/*"
+    },
+    {
+      "Sid": "InvokeValidator",
+      "Effect": "Allow",
+      "Action": "lambda:InvokeFunction",
+      "Resource": "arn:aws:lambda:us-east-2:111859959018:function:construct-portfolio-project-validator"
+    },
+    {
+      "Sid": "ReadApplicationSecrets",
+      "Effect": "Allow",
+      "Action": "secretsmanager:GetSecretValue",
+      "Resource": [
+        "arn:aws:secretsmanager:us-east-2:111859959018:secret:construct-portfolio-project/db-app-HX6atC",
+        "arn:aws:secretsmanager:us-east-2:111859959018:secret:construct-portfolio-project/api-auth-RVElBq"
+      ]
+    },
+    {
+      "Sid": "AuthenticateToEcr",
+      "Effect": "Allow",
+      "Action": "ecr:GetAuthorizationToken",
+      "Resource": "*"
+    },
+    {
+      "Sid": "PullApiContainer",
+      "Effect": "Allow",
+      "Action": [
+        "ecr:BatchCheckLayerAvailability",
+        "ecr:GetDownloadUrlForLayer",
+        "ecr:BatchGetImage"
+      ],
+      "Resource": "arn:aws:ecr:us-east-2:111859959018:repository/construct-portfolio-project-api"
+    }
+  ]
+}

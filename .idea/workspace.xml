@@ -11,19 +11,56 @@
     </cargoProject>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="838b61fb-68d0-43e4-8aea-43e41b548b32" name="Changes" comment="" />
+    <list default="true" id="838b61fb-68d0-43e4-8aea-43e41b548b32" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/construct-workshop.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixtures/crate.usda" beforeDir="false" afterPath="$PROJECT_DIR$/samples/crate.usda" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/api.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/api.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_validation.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="10" />
+    <option name="cachedIndexableFilesCount" value="41" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="RsBuildProfile:dev" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Rust File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Ludiatrix&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Ludiatrix/construct-hosting-prototype.git&quot;,
+    &quot;accountId&quot;: &quot;18e3cd28-3dd9-4d1d-a412-aaacad993a6c&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/database-0.5.0/src/lib.rs" root0="SKIP_INSPECTION" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="NhsoDqnL" />
@@ -34,61 +71,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0000000006319067" />
-      <entry key="S60" value="1.0001486742739596" />
-      <entry key="M2" value="1.0721308092244553" />
-      <entry key="M5" value="3.949046925440536" />
-      <entry key="M10" value="11.159530069571446" />
-      <entry key="M15" value="16.343984525082313" />
-      <entry key="M30" value="24.17410444217004" />
-      <entry key="H1" value="29.479703763774236" />
-      <entry key="H2" value="32.57197478933824" />
-      <entry key="H4" value="34.24182766700394" />
-      <entry key="D1" value="35.70064273108914" />
-      <entry key="W1" value="35.95707707962749" />
+      <entry key="MS100" value="1.462078985845078" />
+      <entry key="MS500" value="4.678739190320934" />
+      <entry key="S2" value="10.191623389313161" />
+      <entry key="S5" value="12.741298854208933" />
+      <entry key="S10" value="13.804690776541026" />
+      <entry key="S30" value="14.612604872807905" />
+      <entry key="S60" value="16.328096831726775" />
+      <entry key="M2" value="29.37878151363537" />
+      <entry key="M5" value="79.5666097875343" />
+      <entry key="M10" value="134.79431187722653" />
+      <entry key="M15" value="170.7883346728279" />
+      <entry key="M30" value="232.13421977347818" />
+      <entry key="H1" value="283.30559328562686" />
+      <entry key="H2" value="318.38658496799917" />
+      <entry key="H4" value="339.2985355080065" />
+      <entry key="D1" value="358.83547171345936" />
+      <entry key="W1" value="362.399525299446" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="0.0" />
-      <entry key="S10" value="0.0" />
-      <entry key="S30" value="0.0" />
-      <entry key="S60" value="0.0" />
-      <entry key="M2" value="0.0" />
-      <entry key="M5" value="0.0" />
-      <entry key="M10" value="0.0" />
-      <entry key="M15" value="0.0" />
-      <entry key="M30" value="0.0" />
-      <entry key="H1" value="0.0" />
-      <entry key="H2" value="0.0" />
-      <entry key="H4" value="0.0" />
-      <entry key="D1" value="0.0" />
-      <entry key="W1" value="0.0" />
+      <entry key="S2" value="3.107150863287927E-256" />
+      <entry key="S5" value="6.265344218047272E-103" />
+      <entry key="S10" value="7.915392736969643E-52" />
+      <entry key="S30" value="9.25033560485582E-18" />
+      <entry key="S60" value="3.0414364377470934E-9" />
+      <entry key="M2" value="5.514921973833435E-5" />
+      <entry key="M5" value="0.019797746039664978" />
+      <entry key="M10" value="0.14070446346745694" />
+      <entry key="M15" value="0.27052365697577035" />
+      <entry key="M30" value="0.5201188873476608" />
+      <entry key="H1" value="0.7211926839254966" />
+      <entry key="H2" value="0.8492306423613607" />
+      <entry key="H4" value="0.9215371085102119" />
+      <entry key="D1" value="0.9864736095237169" />
+      <entry key="W1" value="0.9980563619582966" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.8179020585577811" />
-      <entry key="MS500" value="0.9605948639534766" />
-      <entry key="S2" value="0.9899997047180724" />
-      <entry key="S5" value="0.9959878167538044" />
-      <entry key="S10" value="0.99799189212829" />
-      <entry key="S30" value="0.9993301827854442" />
-      <entry key="S60" value="0.999813695053784" />
-      <entry key="M2" value="1.071959829256208" />
-      <entry key="M5" value="3.9489225624711453" />
-      <entry key="M10" value="11.159397536146361" />
-      <entry key="M15" value="16.343862402105156" />
-      <entry key="M30" value="24.17401786165475" />
-      <entry key="H1" value="29.479651823031315" />
-      <entry key="H2" value="32.57194629736852" />
-      <entry key="H4" value="34.24181274008" />
-      <entry key="D1" value="35.70064014411293" />
-      <entry key="W1" value="35.957076707569385" />
+      <entry key="MS100" value="1.4216807633440145" />
+      <entry key="MS500" value="4.6515782614690675" />
+      <entry key="S2" value="10.17632938024719" />
+      <entry key="S5" value="12.733578334580896" />
+      <entry key="S10" value="13.800494581600693" />
+      <entry key="S30" value="14.611071546338076" />
+      <entry key="S60" value="16.326664498309093" />
+      <entry key="M2" value="29.376562461153682" />
+      <entry key="M5" value="79.58376704878896" />
+      <entry key="M10" value="134.9324825625552" />
+      <entry key="M15" value="171.05646958656675" />
+      <entry key="M30" value="232.6524667077046" />
+      <entry key="H1" value="284.02556027534695" />
+      <entry key="H2" value="319.2351056011025" />
+      <entry key="H4" value="340.2196892674644" />
+      <entry key="D1" value="359.8218770923051" />
+      <entry key="W1" value="363.397571802199" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -96,36 +133,54 @@
   &quot;fromUser&quot;: false
 }</component>
   <component name="ProjectId" id="3KI8NMgHGK85UakmO0GC1XK6w7s" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Cargo.Build `Run`.executor": "Run",
-    "Cargo.Run.executor": "Run",
-    "CidrDebugProfileConversion": "true",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.rust.reset.selective.auto.import": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "/home/ludiatrix/Downloads/doki-theme-jetbrains/lib/doki-theme-jetbrains-88.5-1.16.1.jar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "org.rust.cargo.project.model.PROJECT_DISCOVERY": "true",
-    "org.rust.cargo.project.model.impl.CargoExternalSystemProjectAware.subscribe.first.balloon": "",
-    "org.rust.first.attach.projects": "true",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Cargo.Build `Run`.executor&quot;: &quot;Run&quot;,
+    &quot;Cargo.Run.executor&quot;: &quot;Run&quot;,
+    &quot;CidrDebugProfileConversion&quot;: &quot;true&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.rust.reset.selective.auto.import&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/ludiatrix/Downloads/doki-theme-jetbrains/lib/doki-theme-jetbrains-88.5-1.16.1.jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;org.rust.cargo.project.model.PROJECT_DISCOVERY&quot;: &quot;true&quot;,
+    &quot;org.rust.cargo.project.model.impl.CargoExternalSystemProjectAware.subscribe.first.balloon&quot;: &quot;&quot;,
+    &quot;org.rust.disableDetachedFileInspection/home/ludiatrix/RustroverProjects/construct-workshop/features.rs&quot;: &quot;true&quot;,
+    &quot;org.rust.disableDetachedFileInspection/home/ludiatrix/RustroverProjects/construct-workshop/features/api/constants.rs&quot;: &quot;true&quot;,
+    &quot;org.rust.disableDetachedFileInspection/home/ludiatrix/RustroverProjects/construct-workshop/features/database/systems.rs&quot;: &quot;true&quot;,
+    &quot;org.rust.first.attach.projects&quot;: &quot;true&quot;,
+    &quot;python.packages.toolwindow.project.migrated.to.right.top.v2&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
+  <component name="PyDebuggerOptionsProvider">
+    <option name="myDebuggerBackend" value="DEBUGPY" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/features" />
+      <recent name="$PROJECT_DIR$/samples" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Run" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
       <option name="command" value="run --package construct-workshop --bin construct-workshop" />
@@ -160,5 +215,20 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="init" />
+    <option name="LAST_COMMIT_MESSAGE" value="init" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/features/api/components.rs</url>
+          <line>16</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
